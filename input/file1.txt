@@ -1,0 +1,2 @@
+this is a word count example
+there are two files as input file
