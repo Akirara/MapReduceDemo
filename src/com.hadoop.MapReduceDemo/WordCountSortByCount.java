@@ -1,7 +1,6 @@
 package com.hadoop.MapReduceDemo;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
@@ -56,11 +55,11 @@ public class WordCountSortByCount {
         }
     }
 
-    public static class OutputReducer extends Reducer<IntWritable, Text, IntWritable, Text> {
-        public void reduce(IntWritable key, Text value, Context context) throws IOException, InterruptedException {
-            context.write(key, value);
-        }
-    }
+//    public static class OutputReducer extends Reducer<IntWritable, Text, IntWritable, Text> {
+//        public void reduce(IntWritable key, Text value, Context context) throws IOException, InterruptedException {
+//            context.write(key, value);
+//        }
+//    }
 
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
@@ -80,7 +79,7 @@ public class WordCountSortByCount {
         Job sortJob = Job.getInstance(conf, "sort");
         sortJob.setJarByClass(WordCountSortByCount.class);
         sortJob.setMapperClass(InverseMapper.class);
-        sortJob.setReducerClass(OutputReducer.class);
+//        sortJob.setReducerClass(OutputReducer.class);
         sortJob.setOutputKeyClass(IntWritable.class);
         sortJob.setOutputValueClass(Text.class);
         FileInputFormat.addInputPath(sortJob, tempDir);
