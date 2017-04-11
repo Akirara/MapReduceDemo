@@ -87,7 +87,7 @@ public class PageRank {
 
             if (count == 1) {
                 AdjacentNodes firstAdj = new AdjacentNodes();
-                firstAdj.setValue(0.8);
+                firstAdj.setValue(1.0);
                 firstAdj.setNodes(value.toString().split("\t"));
                 adjacentNodes = firstAdj;
             } else {
